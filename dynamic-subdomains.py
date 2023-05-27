@@ -47,7 +47,7 @@ def scan():
 
 async def watch_files():
     with Inotify(blocking=False) as n:
-        n.add_watch('.', Mask.CREATE | Mask.DELETE | Mask.MOVE | Mask.MODIFY)
+        n.add_watch(path, Mask.CREATE | Mask.DELETE | Mask.MOVE | Mask.MODIFY)
         async for evt in n:
             print(evt)
             scan()
